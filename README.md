@@ -1,10 +1,5 @@
 # WikipediaApplication
 
-
-## Introduction
-
- This project is a simple Wikipedia search engine that allows users to enter a keyword and retrieve search results from Wikipedia. The search results include the title of the article, a brief description, and a link to the article.
- 
  
  ## Features 🌟
 - Simple and easy to use
