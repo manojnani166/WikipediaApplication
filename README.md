@@ -13,6 +13,7 @@
 - CSS
 - JavaScript
 - Bootstrap 4.5.2
+- Wikipedia API
 
 
 ## Demo of Wiki Search
