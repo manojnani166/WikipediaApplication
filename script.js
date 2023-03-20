@@ -1,36 +1,36 @@
-let searchInputEl = document.getElementById("searchInput");
+// Get elements
+const searchInputEl = document.getElementById("searchInput");
+const searchResultsEl = document.getElementById("searchResults");
+const spinnerEl = document.getElementById("spinner");
 
-let searchResultsEl = document.getElementById("searchResults");
-
-let spinnerEl = document.getElementById("spinner");
-
+// Create and append a search result
 function createAndAppendSearchResult(result) {
-  let { link, title, description } = result;
+  const { link, title, description } = result;
 
-  let resultItemEl = document.createElement("div");
+  const resultItemEl = document.createElement("div");
   resultItemEl.classList.add("result-item");
 
-  let titleEl = document.createElement("a");
+  const titleEl = document.createElement("a");
   titleEl.href = link;
   titleEl.target = "_blank";
   titleEl.textContent = title;
   titleEl.classList.add("result-title");
   resultItemEl.appendChild(titleEl);
 
-  let titleBreakEl = document.createElement("br");
+  const titleBreakEl = document.createElement("br");
   resultItemEl.appendChild(titleBreakEl);
 
-  let urlEl = document.createElement("a");
+  const urlEl = document.createElement("a");
   urlEl.classList.add("result-url");
   urlEl.href = link;
   urlEl.target = "_blank";
   urlEl.textContent = link;
   resultItemEl.appendChild(urlEl);
 
-  let linkBreakEl = document.createElement("br");
+  const linkBreakEl = document.createElement("br");
   resultItemEl.appendChild(linkBreakEl);
 
-  let descriptionEl = document.createElement("p");
+  const descriptionEl = document.createElement("p");
   descriptionEl.classList.add("link-description");
   descriptionEl.textContent = description;
   resultItemEl.appendChild(descriptionEl);
@@ -38,35 +38,38 @@ function createAndAppendSearchResult(result) {
   searchResultsEl.appendChild(resultItemEl);
 }
 
+// Display search results
 function displayResults(searchResults) {
   spinnerEl.classList.add("d-none");
 
-  for (let result of searchResults) {
+  for (const result of searchResults) {
     createAndAppendSearchResult(result);
   }
 }
 
+// Search Wikipedia API
 function searchWikipedia(event) {
-  if (event.key === "Enter") {
-
-    spinnerEl.classList.remove("d-none");
-    searchResultsEl.textContent = "";
-
-    let searchInput = searchInputEl.value;
-    let url = "https://apis.ccbp.in/wiki-search?search=" + searchInput;
-    let options = {
-      method: "GET"
-    };
-
-    fetch(url, options)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (jsonData) {
-        let { search_results } = jsonData;
-        displayResults(search_results);
-      });
+  if (event.key !== "Enter") {
+    return;
   }
+
+  // Show spinner and clear previous results
+  spinnerEl.classList.remove("d-none");
+  searchResultsEl.textContent = "";
+
+  const searchInput = searchInputEl.value;
+  const url = `https://apis.ccbp.in/wiki-search?search=${searchInput}`;
+  const options = {
+    method: "GET",
+  };
+
+  fetch(url, options)
+    .then(response => response.json())
+    .then(jsonData => {
+      const { search_results } = jsonData;
+      displayResults(search_results);
+    });
 }
 
+// Listen for search input
 searchInputEl.addEventListener("keydown", searchWikipedia);

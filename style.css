@@ -1,52 +1,57 @@
+/* Importing fonts from Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
 
+/* Setting the font family for the entire page */
 .main-container {
   font-family: "Roboto";
 }
 
+/* Styling for the wiki search header */
 .wiki-search-header {
   border-style: solid;
   border-width: 1px;
   border-color: #d5cdcd;
-  padding-top: 30px;
-  padding-right: 20px;
-  padding-bottom: 30px;
-  padding-left: 20px;
+  padding: 30px 20px; 
   margin-bottom: 40px;
 }
 
+/* Styling for the Wikipedia logo */
 .wiki-logo {
   margin-bottom: 30px;
   width: 150px;
 }
 
+/* Styling for the search input field */
 .search-input {
   font-size: 18px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #d5cdcd;
+  border: 1px solid #d5cdcd; 
   border-radius: 3px;
   padding: 10px;
 }
 
+/* Styling for the search results container */
 .search-results {
   width: 100%;
   padding-left: 20px;
 }
 
+/* Styling for each search result item */
 .result-item {
   margin-bottom: 20px;
 }
 
+/* Styling for the search result title */
 .result-title {
   font-size: 22px;
 }
 
+/* Styling for the search result link description */
 .link-description {
   color: #444444;
   font-size: 15px;
 }
 
+/* Styling for the search result URL */
 .result-url {
   color: #006621;
   text-decoration: none;
